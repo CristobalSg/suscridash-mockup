@@ -1,13 +1,8 @@
-// import { useState } from 'react'
-import './App.css'
+// import React from 'react';
+import AppRoutes from './routes';
 
 function App() {
-
-  return (
-    <>
-      <h1>Vite + React, Typescript</h1>
-    </>
-  )
+  return <AppRoutes />;
 }
 
-export default App
+export default App;

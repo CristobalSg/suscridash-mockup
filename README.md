@@ -52,3 +52,20 @@ export default tseslint.config({
   },
 })
 ```
+suscridash-mockup/
+├── public/
+├── src/
+│   ├── assets/           # Imágenes, íconos, logos
+│   ├── components/       # Componentes reutilizables (botones, inputs, etc.)
+│   ├── layouts/          # Estructuras comunes (Navbar, Sidebar, etc.)
+│   ├── pages/            # Páginas principales (Home, Dashboard, etc.)
+│   ├── routes/           # Configuración de rutas con React Router
+│   ├── styles/           # Archivos globales de estilo (CSS, SCSS, Tailwind, etc.)
+│   ├── types/            # Interfaces y tipos TypeScript globales
+│   ├── utils/            # Funciones o helpers reutilizables
+│   ├── App.tsx
+│   └── main.tsx
+├── .gitignore
+├── package.json
+├── tsconfig.json
+└── README.md
