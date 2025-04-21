@@ -1,71 +1,96 @@
-# React + TypeScript + Vite
+# 💼 Suscridash - Mockup Interactivo
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+**Suscridash** es una aplicación web desarrollada como prototipo interactivo para la gestión de suscripciones empresariales. Permite a las empresas ofrecer planes de suscripción a sus usuarios, gestionar cobros y visualizar métricas relevantes mediante dashboards interactivos.
 
-Currently, two official plugins are available:
+---
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🚀 Características Principales
 
-## Expanding the ESLint configuration
+- 📊 Dashboard moderno e interactivo.
+- 🔐 Sistema de autenticación: login y registro.
+- 🧭 Navegación con React Router.
+- 🎨 Interfaz diseñada con Ant Design.
+- 🧱 Componentes reutilizables con React + TypeScript.
+- ☁️ Despliegue continuo con Vercel.
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+---
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
-```
+## 📁 Estructura del Proyecto
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
-
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
-
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
 ```
 suscridash-mockup/
 ├── public/
 ├── src/
-│   ├── assets/           # Imágenes, íconos, logos
-│   ├── components/       # Componentes reutilizables (botones, inputs, etc.)
-│   ├── layouts/          # Estructuras comunes (Navbar, Sidebar, etc.)
-│   ├── pages/            # Páginas principales (Home, Dashboard, etc.)
-│   ├── routes/           # Configuración de rutas con React Router
-│   ├── styles/           # Archivos globales de estilo (CSS, SCSS, Tailwind, etc.)
-│   ├── types/            # Interfaces y tipos TypeScript globales
-│   ├── utils/            # Funciones o helpers reutilizables
-│   ├── App.tsx
-│   └── main.tsx
-├── .gitignore
+│   ├── components/
+│   ├── layouts/
+│   ├── pages/
+│   ├── routes/
+│   └── App.tsx
 ├── package.json
-├── tsconfig.json
+├── pnpm-lock.yaml
 └── README.md
+```
+
+---
+
+## 🧪 Tecnologías Utilizadas
+
+- ⚛️ React + Vite
+- 📘 TypeScript
+- 🧩 Ant Design
+- 🌐 React Router DOM
+- 🔧 PNPM
+
+---
+
+## 📦 Instalación y Uso
+
+```bash
+pnpm install
+pnpm run dev
+```
+
+La aplicación se ejecutará localmente en: [http://localhost:5173](http://localhost:5173)
+
+---
+
+## 🌐 Rutas Disponibles
+
+- `/` - Inicio
+- `/dashboard` - Panel principal con métricas
+- `/login` - Inicio de sesión
+- `/register` - Registro de usuarios
+- `/about` - Información sobre la app
+
+---
+
+## ✨ Capturas de Pantalla
+
+> A completar con screenshots del dashboard, login, y creación de plan.
+
+---
+
+## 🛠️ Estado del Proyecto
+
+✅ Navegación funcional  
+✅ Dashboard de ejemplo  
+✅ Rutas protegidas  
+🔜 Integración de base de datos  
+🔜 Pasarela de pagos (Stripe)  
+🔜 Gestión real de suscripciones
+
+---
+
+## 📄 Licencia
+
+Este proyecto está bajo la licencia MIT. Ver [LICENSE](LICENSE) para más información.
+
+---
+
+## 👨‍💻 Autor
+
+Desarrollado por [Tu Nombre o Usuario GitHub].
+
+---
+
+¡Gracias por visitar Suscridash! ⭐
