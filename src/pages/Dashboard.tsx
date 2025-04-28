@@ -3,37 +3,7 @@ import MainLayout from '../layouts/MainLayout';
 // import SubscriptionCardsAntd from '../components/subscription-cards-antd';
 import {Card, Table, Badge, Typography, Row, Col, Statistic, Progress} from 'antd';
 import { TeamOutlined, UserOutlined } from '@ant-design/icons';
-
-const dataSource = [
-  {
-    key: "1",
-    name: "Juan Pérez",
-    age: 32,
-    address: "Calle Principal 10",
-    status: "active",
-  },
-  {
-    key: "2",
-    name: "María García",
-    age: 42,
-    address: "Avenida Central 23",
-    status: "inactive",
-  },
-  {
-    key: "3",
-    name: "Carlos López",
-    age: 28,
-    address: "Plaza Mayor 5",
-    status: "active",
-  },
-  {
-    key: "4",
-    name: "Ana Martínez",
-    age: 35,
-    address: "Calle Secundaria 15",
-    status: "pending",
-  },
-];
+import { dataSource } from '../assets/data/dataSource'
 
 const columns = [
   {
@@ -85,8 +55,8 @@ const Dashboard: React.FC = () => {
             <Col xs={24} sm={12} lg={6}>
               <Card bordered={false}>
                 <Statistic
-                  title="Usuarios Activos"
-                  value={1128}
+                  title="Usuarios Subscritos"
+                  value={502}
                   valueStyle={{ color: "#3f8600" }}
                   prefix={<UserOutlined />}
                 />
