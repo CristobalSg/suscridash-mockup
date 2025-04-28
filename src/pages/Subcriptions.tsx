@@ -9,7 +9,7 @@ const Subscriptions: React.FC = () => {
         console.log("Agregar empresa");
     };
 
-    const handleEditCompany = (company) => {
+    const handleEditCompany = (company: any) => {
         console.log("Editar empresa:", company);
     };
 
