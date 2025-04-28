@@ -8,7 +8,7 @@ const Users: React.FC = () => {
         console.log("Agregar Usuario");
     };
 
-    const handleEditUser = (dataUsers) => {
+    const handleEditUser = (dataUsers: any) => {
         console.log("Editar empresa:", dataUsers);
     };
 
