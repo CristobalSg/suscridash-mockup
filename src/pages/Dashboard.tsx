@@ -1,4 +1,4 @@
-import React from 'react'
+import React, {useEffect, useState}from 'react'
 import MainLayout from '../layouts/MainLayout';
 // import SubscriptionCardsAntd from '../components/subscription-cards-antd';
 import {Card, Table, Badge, Typography, Row, Col, Statistic, Progress} from 'antd';
@@ -47,6 +47,16 @@ const columns = [
 ];
 
 const Dashboard: React.FC = () => {
+    // Logica para mostrar la susbs. en el dasboard
+    const [subscription, setSubscription] = useState<{ plan: string; date: string } | null>(null);
+
+    useEffect(() => {
+      const sub = localStorage.getItem("userSubscription");
+      if (sub) {
+        setSubscription(JSON.parse(sub));
+      }
+    }, []);
+
     return (
         <MainLayout>
             <Typography.Title level={4}>Panel de Control</Typography.Title>
@@ -96,6 +106,19 @@ const Dashboard: React.FC = () => {
             </Col>
           </Row>
             <Row gutter={[16, 16]}>
+              {subscription && (
+            <Col xs={24} lg={6}>
+              <Card bordered={false}>
+                <Statistic
+                  title="Plan Actual"
+                  value={subscription.plan === "mensual" ? "Mensual" : "Anual"}
+                />
+                <Typography.Text type="secondary">
+                  Desde: {new Date(subscription.date).toLocaleDateString()}
+                </Typography.Text>
+              </Card>
+            </Col>
+          )}
             <Col xs={24} lg={12}>
               <Card title="Progreso de Proyectos" bordered={false}>
                 <Typography.Paragraph>Proyecto A</Typography.Paragraph>

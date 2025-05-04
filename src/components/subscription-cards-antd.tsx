@@ -1,6 +1,25 @@
-import { Card, Button, Typography, Badge, Divider, Space } from "antd"
+import { Card, Button, Typography, Badge, Divider, Space} from "antd"
 
 const { Title, Text} = Typography
+
+//const openSuccessNotification = () => {
+ // notification.success({
+  //  message: "¡Suscripción exitosa!",
+   // description: "Puedes ver tu plan en el perfil.",
+   // placement: "topRight",
+  //});
+//};
+
+const handleSubscribe = (plan: 'mensual' | 'anual') => {
+  const subscription = {
+    plan,
+    date: new Date().toISOString(),
+  };
+
+  localStorage.setItem('userSubscription', JSON.stringify(subscription));
+  //openSuccessNotification();
+  alert("¡Suscripción exitosa!\nPuedes ver tu plan en el perfil.");
+};
 
 const SubscriptionCardsAntd: React.FC = () => (
     <div style={{ maxWidth: "1200px", margin: "0 auto", padding: "24px" }}>
@@ -41,7 +60,8 @@ const SubscriptionCardsAntd: React.FC = () => (
             </div>
 
             <div style={{ marginTop: "auto" }}>
-                <Button type="primary" size="large" block>
+                <Button type="primary" size="large" block
+                    onClick={() => handleSubscribe("mensual")}>
                     Suscribirse Ahora
                 </Button>
             </div>
@@ -101,7 +121,8 @@ const SubscriptionCardsAntd: React.FC = () => (
                     </div>
 
                     <div style={{ marginTop: "auto" }}>
-                        <Button type="primary" size="large" block>
+                        <Button type="primary" size="large" block
+                            onClick={() => handleSubscribe("anual")}>
                             Obtener Oferta Anual
                         </Button>
                     </div>

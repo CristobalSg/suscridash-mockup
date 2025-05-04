@@ -1,49 +1,89 @@
-import { useState } from "react";
-import React from 'react';
-import { Avatar, Button, Col, Dropdown, Layout, Menu, Row, Space} from 'antd';
-import { Link } from 'react-router-dom';
 import Sider from 'antd/es/layout/Sider';
-import { DashboardOutlined, HomeOutlined, InfoCircleOutlined, LoginOutlined, MenuFoldOutlined, MenuUnfoldOutlined, UserAddOutlined, UserOutlined } from '@ant-design/icons';
+import { Link } from 'react-router-dom';
 import { Header } from "antd/es/layout/layout";
+import React, { useState, useEffect} from "react";
+import { useNavigate } from "react-router-dom";
+import { Avatar, Button, Col, Dropdown, Layout, Menu, Row, Space} from 'antd';
+import { DashboardOutlined, HomeOutlined, InfoCircleOutlined, LoginOutlined, MenuFoldOutlined, MenuUnfoldOutlined, UserAddOutlined, UserOutlined } from '@ant-design/icons';
 
 const { Content, Footer } = Layout;
 
-const menuItems = [
+const allMenuItems = [
   {
     key: "/",
     icon: <HomeOutlined />,
     label: <Link to="/">Inicio</Link>,
+    allowedRoles: ["admin", "empresa", "user"],
   },
   {
     key: "/dashboard",
     icon: <DashboardOutlined />,
     label: <Link to="/dashboard">Dashboard</Link>,
+    allowedRoles: ["admin","empresa"],
   },
   {
     key: "/subcriptions",
     icon: <InfoCircleOutlined />,
     label: <Link to="/subcriptions">Planes</Link>,
+    allowedRoles: ["user"],
   },
   {
     key: "/users",
     icon: <InfoCircleOutlined />,
     label: <Link to="/users">Usuarios</Link>,
+    allowedRoles: ["admin", "empresa"],
   },
   {
     key: "/about",
     icon: <InfoCircleOutlined />,
     label: <Link to="/about">Acerca de</Link>,
+    allowedRoles: ["admin", "empresa", "user"],
+  },
+  {
+    key: "/sub-companies",
+    icon: <InfoCircleOutlined />,
+    label: <Link to="/subcriptions-companies">Subcripciones</Link>,
+    allowedRoles: ["admin", "empresa"],
   },
 ];
 
+
 interface MainLayoutProps {
-  children: React.ReactNode;
+    children: React.ReactNode;
 }
 
 const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
     const [collapsed, setCollapsed] = useState(false);
     const [isMobile, setIsMobile] = useState(false);
+    const navigate = useNavigate();
     // const location = useLocation();
+    
+    //const role = localStorage.getItem("userRole") as 'admin' | 'empresa' | 'user' | null;
+    const user = JSON.parse(localStorage.getItem("userRole") || "{}");
+    console.log("User",user)
+    const role = user.role ?? "user";
+    console.log(role)
+    
+    //const menuItems = allMenuItems.filter(item => item.allowedRoles.includes(role ?? 'admin'));
+    const menuItems = allMenuItems.filter(item => item.allowedRoles.includes(role));
+    console.log(menuItems)
+
+    console.log(allMenuItems)
+    
+    const handleLogout = () => {
+    localStorage.clear(); // Limpia todos los datos, incl. rol
+    navigate("/login");   // Redirige al login
+  };
+
+    const [userName, setUserName] = useState<string>("Usuario");
+
+    useEffect(() => {
+        const storedUser = localStorage.getItem("user");
+        if (storedUser) {
+        const parsed = JSON.parse(storedUser);
+        setUserName(parsed.name || "Usuario");
+        }
+    }, []);
 
     return (
         <Layout style={{ minHeight: '100vh'}}>
@@ -143,13 +183,13 @@ const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
                                         label: <Link to="/profile">Perfil</Link>,
                                     },
                                     { key: "2", label: "Configuración" },
-                                    { key: "3", label: "Cerrar sesión" },
+                                    { key: "3", label: "Cerrar sesión", onClick: handleLogout},
                                     ],
                                 }}
                                 >
                                 <Space>
                                     <Avatar style={{ backgroundColor: "#1677ff" }} icon={<UserOutlined />} />
-                                    <span>Admin</span>
+                                    <span>{userName}</span>
                                 </Space>
                                 </Dropdown>
                             </Space>

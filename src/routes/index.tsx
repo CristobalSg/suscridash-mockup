@@ -20,13 +20,28 @@ const AppRoutes = () => (
           <PrivateRoute>
             <Home />
           </PrivateRoute>
+        } />
+      
+        <Route path="/dashboard" element={
+          <PrivateRoute>
+            <Dashboard />
+          </PrivateRoute>
+        } />
+
+        <Route path="/subcriptions" element={
+          <PrivateRoute>
+            <Subscriptions />
+          </PrivateRoute>
           } />
 
-      <Route path="/dashboard" element={<Dashboard />} />
-      <Route path="/subcriptions" element={<Subscriptions />} />
-      <Route path="/about" element={<About />} />
-      <Route path="/users" element={<Users />} />
-      <Route path="/profile" element={<Perfil />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/users" element={
+          <PrivateRoute>
+            <Users />
+          </PrivateRoute>
+          } />
+
+        <Route path="/profile" element={<Perfil />} />
     </Routes>
   </Router>
 );

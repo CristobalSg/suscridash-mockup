@@ -18,7 +18,10 @@ const Login: React.FC = () => {
   const onFinish = (values: LoginFormValues) => {
     console.log('Login info:', values);
     // Simulamos que guardamos el usuario logueado en localStorage
-    localStorage.setItem('user', JSON.stringify(values));
+    //localStorage.setItem('user', JSON.stringify(values));
+    // Al iniciar sesión 
+    localStorage.setItem('userRole', JSON.stringify(values)); // otros valores posibles: 'empresa', 'cliente'
+
     navigate('/'); // o navega a /dashboard, /perfil, etc.
   };
 
