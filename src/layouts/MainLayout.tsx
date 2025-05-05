@@ -13,13 +13,13 @@ const allMenuItems = [
     key: "/",
     icon: <HomeOutlined />,
     label: <Link to="/">Inicio</Link>,
-    allowedRoles: ["admin", "empresa", "user"],
+    allowedRoles: ["admin", "company", "user"],
   },
   {
     key: "/dashboard",
     icon: <DashboardOutlined />,
     label: <Link to="/dashboard">Dashboard</Link>,
-    allowedRoles: ["admin","empresa"],
+    allowedRoles: ["admin","company"],
   },
   {
     key: "/subcriptions",
@@ -31,19 +31,19 @@ const allMenuItems = [
     key: "/users",
     icon: <InfoCircleOutlined />,
     label: <Link to="/users">Usuarios</Link>,
-    allowedRoles: ["admin", "empresa"],
+    allowedRoles: ["admin", "company"],
   },
   {
     key: "/about",
     icon: <InfoCircleOutlined />,
     label: <Link to="/about">Acerca de</Link>,
-    allowedRoles: ["admin", "empresa", "user"],
+    allowedRoles: ["admin", "company", "user"],
   },
   {
     key: "/sub-companies",
     icon: <InfoCircleOutlined />,
     label: <Link to="/subcriptions-companies">Subcripciones</Link>,
-    allowedRoles: ["admin", "empresa"],
+    allowedRoles: ["admin", "company"],
   },
 ];
 
@@ -58,7 +58,7 @@ const MainLayout: React.FC<MainLayoutProps> = ({ children }) => {
     const navigate = useNavigate();
     // const location = useLocation();
     
-    //const role = localStorage.getItem("userRole") as 'admin' | 'empresa' | 'user' | null;
+    //const role = localStorage.getItem("userRole") as 'admin' | 'company' | 'user' | null;
     const user = JSON.parse(localStorage.getItem("userRole") || "{}");
     console.log("User",user)
     const role = user.role ?? "user";
